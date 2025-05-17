@@ -22,11 +22,11 @@ export default function GameBoard() {
   }
 
   const winner = calculateWinner(board)
-  const status = winner 
-    ? `Winner: ${winner}` 
-    : board.every(square => square) 
-    ? 'Draw!' 
-    : `Next player: ${xIsNext ? 'X' : 'O'}`
+  const status = winner
+    ? `Победитель: ${winner}`
+    : board.every(square => square)
+    ? 'Ничья!'
+    : `Следующий игрок: ${xIsNext ? 'X' : 'O'}`
 
   return (
     <div>
@@ -49,6 +49,12 @@ export default function GameBoard() {
           <Cell key={i} value={square} onClick={() => handleClick(i)} />
         ))}
       </div>
+      <button
+        onClick={() => resetGame(boardSize)}
+        className="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+      >
+        Очистить
+      </button>
     </div>
   )
 }
